@@ -34,7 +34,7 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('usemin', 'imagemin', 'copyfonts', 'sass');
+  gulp.start('usemin', 'imagemin', 'fonts', 'sass');
 });
 
 gulp.task('sass', function () {
@@ -82,18 +82,21 @@ gulp.task('imagemin', function() {
   );
 });
 
-gulp.task('copyfonts', ['clean'], function() {
-  gulp
-    .src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
-    .pipe(gulp.dest('./dist/fonts'));
-  gulp
-    .src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
-    .pipe(gulp.dest('./dist/fonts'))
-    .pipe(gulp.dest('../json-server/public/fonts'));
+gulp.task('fonts', function() {
+    gulp
+        .src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
+        .pipe(gulp.dest('./dist/fonts'));
+    gulp
+        .src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
+        .pipe(gulp.dest('./dist/fonts'))
+        .pipe(gulp.dest('../json-server/public/fonts'));
+    gulp
+        .src('./src/fonts/**/*.{ttf,woff,eof,svg}*')
+        .pipe(gulp.dest('./dist/fonts/'));
 });
 
 // Watch
-gulp.task('watch', ['browser-sync'], function() {
+gulp.task('watch', ['sync'], function() {
   // Watch .js files
   gulp.watch(
     '{./src/style/**/*.scss, src/views/**/*.html,src/scripts/**/*.js,src/styles/**/*.css,src/**/*.html}',
