@@ -78,7 +78,6 @@ gulp.task('imagemin', function() {
           message: 'Images task complete'
         })
       )
-      .pipe(gulp.dest('../json-server/public/images'))
   );
 });
 
@@ -99,7 +98,7 @@ gulp.task('fonts', function() {
 gulp.task('watch', ['sync'], function() {
   // Watch .js files
   gulp.watch(
-    '{./src/style/**/*.scss, src/views/**/*.html,src/scripts/**/*.js,src/styles/**/*.css,src/**/*.html}',
+    '{./src/styles/**/*.scss, src/scripts/**/*.js,src/styles/**/*.css,src/**/*.html}',
     ['usemin']
   );
   // Watch image files
@@ -117,7 +116,9 @@ gulp.task('supervise', function() {
 gulp.task('sync', ['default'], function() {
   var files = [
     'src/**/*.html',
+    './gulpfile.js',
     'src/styles/**/*.css',
+    'src/styles/**/*.scss',
     'src/images/**/*.png',
     'src/scripts/**/*.js',
     'src/views/**/*.html',

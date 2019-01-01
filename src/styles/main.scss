@@ -7,6 +7,13 @@
 @import url('font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
 
+// Ten Developments pallette ============
+$color1: #2493bc;  // Light sea green 
+$color2: #2384B4;  // Light sea green 
+$color3: #29ADC8; // Light sea green 
+$color4: #248CB4;  // Light sea green 
+$black:  #1C1C1C;   // Black #1C1C1C
+
 /*
 	Escape Velocity by HTML5 UP
 	html5up.net | @ajlkn
@@ -459,7 +466,7 @@
 		}
 
 		&.style1 {
-			background: #e97770 url('images/overlay.png');
+			background: $color2 url('images/overlay.png');
 			color: #fff;
 
 			&:hover {
@@ -606,7 +613,7 @@
 		}
 
 		h3 {
-			color: #e97770 !important;
+			color: $color1 !important;
 			margin: -0.35em 0 0.75em 0;
 			font-size: 1.15em;
 			letter-spacing: 0.05em;
@@ -748,12 +755,12 @@
 		}
 
 		&.style1 {
-			background: #e97770 url('images/overlay.png');
+			background: $color2 url('images/overlay.png');
 			color: #eee;
 			color: rgba(255, 255, 255, 0.75);
 
 			.title {
-				background: #e97770 url('images/overlay.png');
+				background: $color2 url('images/overlay.png');
 				color: #fff;
 			}
 
@@ -818,6 +825,14 @@
 		.homepage & {
 			height: 35em;
 		}
+        video {
+            position: fixed;
+            right:0;
+            bottom:0;
+            min-width: 100%;
+            min-height: 100%;
+            background-color: $black;
+        }
 	}
 
 /* Logo */
@@ -827,6 +842,11 @@
 		text-align: center;
 		position: relative;
 		top: 1.5em;
+
+        img {
+            width: 15%;
+            padding-bottom: 2em;
+        }
 
 		h1 {
 			font-weight: 900;
@@ -874,7 +894,7 @@
 
 				> a, > span {
 					display: block;
-					color: #eee;
+					color: $color1;
 					color: rgba(255, 255, 255, 0.75);
 					text-transform: uppercase;
 					text-decoration: none;
@@ -892,13 +912,13 @@
 
 				&:hover {
 					> a {
-						color: #fff;
+						color: $color1;
 					}
 				}
 
 				&.active {
 					> a, > span {
-						color: #fff;
+						color: $color1;
 					}
 				}
 			}
@@ -1010,7 +1030,7 @@
 			text-align: center;
 
 			h3 {
-				color: #e97770;
+				color: $color1;
 				margin: 0 0 0.75em 0;
 				font-size: 1.15em;
 				letter-spacing: 0.05em;
