@@ -13,6 +13,7 @@ $color2: #2384B4;  // Light sea green
 $color3: #29ADC8; // Light sea green 
 $color4: #248CB4;  // Light sea green 
 $black:  #1C1C1C;   // Black #1C1C1C
+$white: #eee;
 
 /*
 	Escape Velocity by HTML5 UP
@@ -457,7 +458,8 @@ $black:  #1C1C1C;   // Black #1C1C1C
 		line-height: 4em;
 
 		&:hover {
-			background-color: #f98780;
+			background-color: $white;
+			color: $color1;
 		}
 
 		&.large {
@@ -470,7 +472,8 @@ $black:  #1C1C1C;   // Black #1C1C1C
 			color: #fff;
 
 			&:hover {
-				background-color: #f98780;
+			background-color: $white;
+			color: $color1;
 			}
 
 			&:active {
@@ -830,8 +833,7 @@ $black:  #1C1C1C;   // Black #1C1C1C
             right:0;
             bottom:0;
             min-width: 100%;
-            min-height: 100%;
-            background-color: $black;
+            background-color: $white;
         }
 	}
 
@@ -875,12 +877,13 @@ $black:  #1C1C1C;   // Black #1C1C1C
 		top: 2.5em;
 		left: 0;
 		width: 100%;
-		text-align: center;
+        color: $color1;
+        text-align: center;
 
 		> ul {
 			display: inline-block;
 			border-radius: 0.35em;
-			box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
+			box-shadow: inset 0px 0px 1px 1px $color1;
 			padding: 0 1.5em 0 1.5em;
 
 			> li {
@@ -895,7 +898,7 @@ $black:  #1C1C1C;   // Black #1C1C1C
 				> a, > span {
 					display: block;
 					color: $color1;
-					color: rgba(255, 255, 255, 0.75);
+					// color: rgba(255, 255, 255, 0.75);
 					text-transform: uppercase;
 					text-decoration: none;
 					font-size: 0.7em;
@@ -912,13 +915,16 @@ $black:  #1C1C1C;   // Black #1C1C1C
 
 				&:hover {
 					> a {
-						color: $color1;
+						color: $white;
+                        background-color: $color1;
+                        padding: 0em 2em;
+
 					}
 				}
 
 				&.active {
 					> a, > span {
-						color: $color1;
+						color: $color3;
 					}
 				}
 			}

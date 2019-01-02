@@ -11,17 +11,18 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-   changed = require('gulp-changed'),
+    changed = require('gulp-changed'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
     php = require('gulp-connect-php'),
     sass = require('gulp-sass'),
-    del = require('del');
-    
+    del = require('del'),
+    plumber = require('gulp-plumber');
 
 gulp.task('jshint', function() {
   return gulp
     .src('src/scripts/**/*.js')
+    .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(gulp.dest('./dist/scripts/'));
@@ -39,13 +40,15 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('sass', function () {
     return gulp.src('./src/styles/**/*.scss')
+    .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/styles/'));
+    .pipe(gulp.dest('./dist/styles'));
 });
 
 gulp.task('usemin', ['jshint'], function() {
   return gulp
     .src('./src/**/*.html')
+    .pipe(plumber())
     .pipe(
       usemin({
         css: [minifycss(), rev()],
@@ -58,40 +61,43 @@ gulp.task('usemin', ['jshint'], function() {
 
 // Images
 gulp.task('imagemin', function() {
-  return (
+    return (
     del(['dist/images']),
-    gulp
-      .src('src/images/**/*')
-      .pipe(
-        cache(
-          imagemin({
-            cache: false,
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
-          })
+        gulp
+        .src('src/images/**/*')
+        .pipe(plumber())
+        .pipe(
+            cache(
+                imagemin({
+                    cache: false,
+                    optimizationLevel: 3,
+                    progressive: true,
+                    interlaced: true
+                })
+            )
         )
-      )
-      .pipe(gulp.dest('dist/images'))
-      .pipe(
-        notify({
-          message: 'Images task complete'
-        })
-      )
-  );
+        .pipe(gulp.dest('dist/images'))
+        .pipe(
+            notify({
+                message: 'Images task complete'
+            })
+        )
+    );
 });
 
 gulp.task('fonts', function() {
     gulp
         .src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
+    .pipe(plumber())
         .pipe(gulp.dest('./dist/fonts'));
     gulp
         .src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
+    .pipe(plumber())
         .pipe(gulp.dest('./dist/fonts'))
-        .pipe(gulp.dest('../json-server/public/fonts'));
     gulp
         .src('./src/fonts/**/*.{ttf,woff,eof,svg}*')
-        .pipe(gulp.dest('./dist/fonts/'));
+    .pipe(plumber())
+        .pipe(gulp.dest('./dist/fonts'));
 });
 
 // Watch
@@ -99,10 +105,8 @@ gulp.task('watch', ['sync'], function() {
   // Watch .js files
   gulp.watch(
     '{./src/styles/**/*.scss, src/scripts/**/*.js,src/styles/**/*.css,src/**/*.html}',
-    ['usemin']
+    ['default']
   );
-  // Watch image files
-  gulp.watch('src/images/**/*', ['imagemin']);
 });
 
 gulp.task('supervise', function() {
