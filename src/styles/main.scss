@@ -830,9 +830,11 @@ $white: #eee;
 		}
         video {
             position: fixed;
+            // display:inline;
             right:0;
             bottom:0;
-            min-width: 100%;
+            top:0;
+            width: 100%;
             background-color: $white;
         }
 	}
