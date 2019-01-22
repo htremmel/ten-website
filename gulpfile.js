@@ -1,6 +1,7 @@
 var ngannotate = require('gulp-ng-annotate');
 
 var gulp = require('gulp'),
+    php = require('gulp-connect-php'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
@@ -14,7 +15,6 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
-    php = require('gulp-connect-php'),
     sass = require('gulp-sass'),
     del = require('del'),
     plumber = require('gulp-plumber');
@@ -100,11 +100,16 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('./dist/fonts'));
 });
 
+// Php server
+gulp.task('connect', function() {
+    php.server();
+});
+
 // Watch
 gulp.task('watch', ['sync'], function() {
   // Watch .js files
   gulp.watch(
-    '{./src/styles/**/*.scss, src/scripts/**/*.js,src/styles/**/*.css,src/**/*.html}',
+    '{**/*.php, ./src/styles/**/*.scss, src/scripts/**/*.js,src/styles/**/*.css,src/**/*.html}',
     ['default']
   );
 });
@@ -122,6 +127,7 @@ gulp.task('sync', ['default'], function() {
     'src/**/*.html',
     './gulpfile.js',
     'src/styles/**/*.css',
+    'src/**/*.php',
     'src/styles/**/*.scss',
     'src/images/**/*.png',
     'src/scripts/**/*.js',
@@ -129,13 +135,16 @@ gulp.task('sync', ['default'], function() {
     'dist/**/*'
   ];
 
-  browserSync.init(files, {
-    server: {
-      baseDir: 'dist',
-      index: 'index.html'
-    },
-    reloadDelay: 500
-  });
+      php.server({}, function(){ 
+          browserSync.init(files, {
+              server: {
+                  proxy:'127.0.0.1:8000',
+                  baseDir: 'dist',
+                  index: 'index.html'
+              },
+              reloadDelay: 500
+          });
+      });
   // Watch any files in dist/, reload on change
   gulp.watch(['dist/**']).on('change', browserSync.reload);
 });
