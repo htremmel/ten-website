@@ -7,14 +7,6 @@
 @import url('font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900');
 
-// Ten Developments pallette ============
-$color1: #2493bc;  // Light sea green 
-$color2: #2384B4;  // Light sea green 
-$color3: #29ADC8; // Light sea green 
-$color4: #248CB4;  // Light sea green 
-$black:  #1C1C1C;   // Black #1C1C1C
-$white: #eee;
-
 /*
 	Escape Velocity by HTML5 UP
 	html5up.net | @ajlkn
@@ -458,8 +450,7 @@ $white: #eee;
 		line-height: 4em;
 
 		&:hover {
-			background-color: $white;
-			color: $color1;
+			background-color: #f98780;
 		}
 
 		&.large {
@@ -468,12 +459,11 @@ $white: #eee;
 		}
 
 		&.style1 {
-			background: $color2 url('images/overlay.png');
+			background: #e97770 url('images/overlay.png');
 			color: #fff;
 
 			&:hover {
-			background-color: $white;
-			color: $color1;
+				background-color: #f98780;
 			}
 
 			&:active {
@@ -616,7 +606,7 @@ $white: #eee;
 		}
 
 		h3 {
-			color: $color1 !important;
+			color: #e97770 !important;
 			margin: -0.35em 0 0.75em 0;
 			font-size: 1.15em;
 			letter-spacing: 0.05em;
@@ -758,12 +748,12 @@ $white: #eee;
 		}
 
 		&.style1 {
-			background: $color2 url('images/overlay.png');
+			background: #e97770 url('images/overlay.png');
 			color: #eee;
 			color: rgba(255, 255, 255, 0.75);
 
 			.title {
-				background: $color2 url('images/overlay.png');
+				background: #e97770 url('images/overlay.png');
 				color: #fff;
 			}
 
@@ -828,19 +818,6 @@ $white: #eee;
 		.homepage & {
 			height: 35em;
 		}
-        video {
-            position: fixed;
-            // display:inline;
-            right:0;
-            bottom:0;
-<<<<<<< HEAD
-            min-width: 100%;
-=======
-            top:0;
-            width: 100%;
->>>>>>> develop
-            background-color: $white;
-        }
 	}
 
 /* Logo */
@@ -850,11 +827,6 @@ $white: #eee;
 		text-align: center;
 		position: relative;
 		top: 1.5em;
-
-        img {
-            width: 15%;
-            padding-bottom: 2em;
-        }
 
 		h1 {
 			font-weight: 900;
@@ -883,13 +855,12 @@ $white: #eee;
 		top: 2.5em;
 		left: 0;
 		width: 100%;
-        color: $color1;
-        text-align: center;
+		text-align: center;
 
 		> ul {
 			display: inline-block;
 			border-radius: 0.35em;
-			box-shadow: inset 0px 0px 1px 1px $color1;
+			box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
 			padding: 0 1.5em 0 1.5em;
 
 			> li {
@@ -903,8 +874,8 @@ $white: #eee;
 
 				> a, > span {
 					display: block;
-					color: $color1;
-					// color: rgba(255, 255, 255, 0.75);
+					color: #eee;
+					color: rgba(255, 255, 255, 0.75);
 					text-transform: uppercase;
 					text-decoration: none;
 					font-size: 0.7em;
@@ -921,16 +892,13 @@ $white: #eee;
 
 				&:hover {
 					> a {
-						color: $white;
-                        background-color: $color1;
-                        padding: 0em 2em;
-
+						color: #fff;
 					}
 				}
 
 				&.active {
 					> a, > span {
-						color: $color3;
+						color: #fff;
 					}
 				}
 			}
@@ -1042,7 +1010,7 @@ $white: #eee;
 			text-align: center;
 
 			h3 {
-				color: $color1;
+				color: #e97770;
 				margin: 0 0 0.75em 0;
 				font-size: 1.15em;
 				letter-spacing: 0.05em;
